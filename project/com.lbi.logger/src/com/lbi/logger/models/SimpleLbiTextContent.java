@@ -70,19 +70,19 @@ public class SimpleLbiTextContent {
 		
 		String new_line = (pos > 0 ? line.substring(pos) : line).toLowerCase();
 		
-		if(new_line.startsWith("fatal:")){
+		if(new_line.startsWith("[fatal]")){
 			startRange();
 			inFatal = true;
-		}else if(new_line.startsWith("error:")){
+		}else if(new_line.startsWith("[error]")){
 			startRange();
 			inError = true;
-		}else if(new_line.startsWith("warning:")){
+		}else if(new_line.startsWith("[warning]")){
 			startRange();
 			inWarning = true;
-		}else if(new_line.startsWith("info:")){
+		}else if(new_line.startsWith("[info]")){
 			startRange();
 			inInfo = true;
-		}else if(new_line.startsWith("debug:")){
+		}else if(new_line.startsWith("[debug]")){
 			startRange();
 			inDebug = true;
 		}else{
