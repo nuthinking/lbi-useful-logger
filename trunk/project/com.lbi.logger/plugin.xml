@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="com.lbi.logger"
+   name="LBi Logger"
+   version="0.1.1"
+   provider-name="LBi"
+   class="com.lbi.logger.Activator">
+
+   <runtime>
+      <library name="lbi_logger.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+   </requires>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Logging"
+            id="com.lbi.logger">
+      </category>
+      <view
+            name="Logger"
+            icon="icons/view.gif"
+            category="com.lbi.logger"
+            class="com.lbi.logger.views.MainView"
+            id="com.lbi.logger.views.MainView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="com.lbi.logger.views.MainView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+</plugin>
