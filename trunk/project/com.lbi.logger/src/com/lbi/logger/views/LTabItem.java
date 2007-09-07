@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Composite;
 import com.lbi.logger.helpers.BufferUtils;
 import com.lbi.logger.helpers.LogMonitor;
 import com.lbi.logger.listeners.ILogListener;
-import com.lbi.logger.models.SimpleLbiTextContent;
+import com.lbi.logger.models.TextContent;
 
 public class LTabItem extends CTabItem
 {
@@ -33,7 +33,7 @@ public class LTabItem extends CTabItem
 	private StyledText styledText;
 	private Composite body;
 	private LogMonitor log_monitor;
-	private SimpleLbiTextContent text_content;
+	private TextContent text_content;
 	
 	public LTabItem(CTabFolder parent, String log_path)
 	{
@@ -47,7 +47,6 @@ public class LTabItem extends CTabItem
 		//checkBuffer();
 		/*addDisposeListener(new DisposeListener(){
 			public void widgetDisposed(DisposeEvent e) {
-				// TODO Auto-generated method stub
 				stopLogging();
 			}});*/
 		log_monitor = new LogMonitor(log_path, styledText.getDisplay(), CHECK_DELAY);
@@ -66,12 +65,11 @@ public class LTabItem extends CTabItem
 			}
 			
 		});
-		text_content = new SimpleLbiTextContent();
+		text_content = new TextContent();
 	}
 	
 	protected void addContent(String newContent)
 	{
-		// TODO Auto-generated method stub
 		styledText.append(text_content.parseContent(newContent, styledText.getCharCount()));
 //		styledText.setStyleRanges(text_content.getStyleRanges());
 		styledText.setStyleRanges(concatStyles(styledText.getStyleRanges(), text_content.getStyleRanges()));
@@ -92,7 +90,6 @@ public class LTabItem extends CTabItem
 	}
 	
 	private void updateLabel() {
-		// TODO Auto-generated method stub
 		String name = (log_path.lastIndexOf("/")>-1 ? log_path.substring(log_path.lastIndexOf("/")+1) : log_path);
 		setText(name);
 	}
@@ -110,7 +107,6 @@ public class LTabItem extends CTabItem
 		styledText = new StyledText(body, SWT.MULTI | SWT.WRAP | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.READ_ONLY | SWT.H_SCROLL);
 		styledText.addDisposeListener(new DisposeListener(){
 			public void widgetDisposed(DisposeEvent e) {
-				// TODO Auto-generated method stub
 				stopLogging();
 			}});
 		/*styledText.addFocusListener(new FocusListener(){
@@ -119,14 +115,12 @@ public class LTabItem extends CTabItem
 			}
 		
 			public void focusLost(FocusEvent e) {
-				// TODO Auto-generated method stub
 				System.out.println("FocusLost:" + e.toString());
 			}});*/
 		/*styledText.addMouseMoveListener(new MouseMoveListener(){
 
 			public void mouseMove(MouseEvent e)
 			{
-				// TODO Auto-generated method stub
 				
 			}
 			
@@ -135,19 +129,16 @@ public class LTabItem extends CTabItem
 
 			public void mouseDoubleClick(MouseEvent e)
 			{
-				// TODO Auto-generated method stub
 				cleanBuffer();
 			}
 
 			public void mouseDown(MouseEvent e)
 			{
-				// TODO Auto-generated method stub
 				
 			}
 
 			public void mouseUp(MouseEvent e)
 			{
-				// TODO Auto-generated method stub
 				
 			}
 		
@@ -172,7 +163,6 @@ public class LTabItem extends CTabItem
 	protected void cleanBuffer()
 	{
 		//System.out.println("### cleanBuffer!");
-		// TODO Auto-generated method stub
 		log_monitor.clean();
 		styledText.setText("");
 		styledText.setStyleRanges(new StyleRange[0]);
@@ -188,6 +178,11 @@ public class LTabItem extends CTabItem
 	{
 		System.out.println("### stopLogging: " + __text);
 		log_monitor.stop();
+	}
+
+	public TextContent getTextContent()
+	{
+		return text_content;
 	}
 	
 	/*private void draw ()
