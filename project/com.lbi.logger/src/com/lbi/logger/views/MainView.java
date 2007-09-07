@@ -29,6 +29,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
@@ -42,6 +43,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 import com.lbi.logger.actions.ShowAboutAction;
+import com.lbi.logger.helpers.ColorsHelper;
 
 public class MainView extends ViewPart {
 	protected TableViewer viewer;
@@ -68,6 +70,8 @@ public class MainView extends ViewPart {
 	public void createPartControl(Composite $parent)
 	{
 		parent = $parent;
+		
+		ColorsHelper.setDisplay(parent.getDisplay());
 		
 		//parent.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		//parent.setLayout(new RowLayout());
