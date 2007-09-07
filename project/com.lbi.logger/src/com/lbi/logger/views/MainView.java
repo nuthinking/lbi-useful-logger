@@ -1,8 +1,6 @@
 package com.lbi.logger.views;
 
 
-import java.util.Iterator;
-
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -10,26 +8,21 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.DoubleClickEvent;
-import org.eclipse.jface.viewers.IDoubleClickListener;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
@@ -66,15 +59,21 @@ public class MainView extends ViewPart {
 	CTabFolder tab_folder;
 	private IMemento memento;
 	protected LTabItem selected_tab;
+	private GroupButtonsView group_buttons_view;
 	
 	public void createPartControl(Composite $parent)
 	{
 		parent = $parent;
 		
 		ColorsHelper.setDisplay(parent.getDisplay());
+
+		parent.setLayout(new FormLayout());
+		
+		group_buttons_view = new GroupButtonsView(parent, 0);
+		
+		
 		
 		//parent.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		//parent.setLayout(new RowLayout());
 		
 		createTabFolder();
 		
@@ -89,6 +88,14 @@ public class MainView extends ViewPart {
 		// TODO Auto-generated method stub
 		int modes = SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL | SWT.CLOSE | SWT.TOP;
 		tab_folder = new CTabFolder(parent, modes);
+		
+		FormData listData = new FormData ();
+		listData.left = new FormAttachment (0, 0);
+		listData.right = new FormAttachment (100, 0);
+		listData.top = new FormAttachment (group_buttons_view, 0);
+		listData.bottom = new FormAttachment (100, 0);
+		tab_folder.setLayoutData (listData);
+		
 		tab_folder.addSelectionListener(new SelectionListener (){
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
@@ -100,8 +107,7 @@ public class MainView extends ViewPart {
 				if(selected_tab != null) selected_tab.stopLogging();
 				LTabItem tab = (LTabItem) e.item;
 				System.out.println("widgetSelected item:" + tab.getText());
-				tab.startLogging();
-				selected_tab = tab;
+				selectTab(tab);
 			}
 		});
 		//tab_folder.setSelectionForeground(new Color(parent.getDisplay(), 255, 255, 255));
@@ -193,9 +199,9 @@ public class MainView extends ViewPart {
 	
 	protected void addNewLog (String path)
 	{
-		LTabItem item = addLog(path);
-		tab_folder.setSelection(item);
-		item.startLogging();
+		LTabItem tab = addLog(path);
+		tab_folder.setSelection(tab);
+		selectTab(tab);
 	}
 
 	/*private void hookDoubleClickAction() {
@@ -257,11 +263,17 @@ public class MainView extends ViewPart {
 				// check selection
 				IMemento selection_memento = memento.getChild("selection");
 				int index = Integer.parseInt(selection_memento.getID());
-				LTabItem initial_item = (LTabItem) tab_folder.getItem(index);
-				tab_folder.setSelection(initial_item);
-				initial_item.startLogging();
-				selected_tab = initial_item;
+				LTabItem tab = (LTabItem) tab_folder.getItem(index);
+				tab_folder.setSelection(tab);
+				selectTab(tab);
 			}
 		}
+	}
+	
+	private void selectTab (LTabItem tab)
+	{
+		tab.startLogging();
+		group_buttons_view.setCurrentTab(tab);
+		selected_tab = tab;
 	}
 }
