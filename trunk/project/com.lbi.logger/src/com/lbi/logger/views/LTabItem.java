@@ -33,6 +33,7 @@ public class LTabItem extends CTabItem
 	private StyledText styledText;
 	private Composite body;
 	private LogMonitor log_monitor;
+	private SimpleLbiTextContent text_content;
 	
 	public LTabItem(CTabFolder parent, String log_path)
 	{
@@ -65,15 +66,16 @@ public class LTabItem extends CTabItem
 			}
 			
 		});
+		text_content = new SimpleLbiTextContent();
 	}
 	
 	protected void addContent(String newContent)
 	{
 		// TODO Auto-generated method stub
-		SimpleLbiTextContent tc = new SimpleLbiTextContent(body.getDisplay());
-		tc.setContent(newContent, styledText.getCharCount());
-		styledText.append(tc.toPlainText());
-		styledText.setStyleRanges(concatStyles(styledText.getStyleRanges(), tc.getStyleRanges()));
+		styledText.append(text_content.parseContent(newContent, styledText.getCharCount()));
+//		styledText.setStyleRanges(text_content.getStyleRanges());
+		styledText.setStyleRanges(concatStyles(styledText.getStyleRanges(), text_content.getStyleRanges()));
+		
 		styledText.setTopIndex(styledText.getLineCount());
 	}
 	
