@@ -4,10 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
@@ -27,14 +24,9 @@ public class GroupButtonsView extends Composite
 	{
 		super(parent, style);
 		// TODO Auto-generated constructor stub
+
+		setLayout (new FillLayout());
 		
-		setLayout (new FillLayout ());
-		
-		Point size = computeSize (SWT.DEFAULT, SWT.DEFAULT);
-		final FormData buttonsData = new FormData (size.x, 25);
-		buttonsData.left = new FormAttachment (0, 0);
-		buttonsData.right = new FormAttachment (100, 0);
-		setLayoutData (buttonsData);
 		pack();
 		/*Listener listener = new Listener () {
 			public void handleEvent (Event e) {
@@ -48,13 +40,13 @@ public class GroupButtonsView extends Composite
 				((Button) e.widget).setSelection (true);
 			}
 		};
-		for (int i=0; i<20; i++) {
+		for (int i=0; i<5; i++) {
 			Button button = new Button (this, SWT.TOGGLE);
 			button.setText ("B" + i);
-			button.addListener (SWT.Selection, listener);
+//			button.addListener (SWT.Selection, listener);
 			if (i == 0) button.setSelection (true);
-		}*/
-//		addGroup("initial");
+		}
+		addGroup("initial");*/
 	}
 	
 	public void setCurrentTab(LTabItem tab)

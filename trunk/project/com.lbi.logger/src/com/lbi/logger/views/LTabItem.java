@@ -1,8 +1,5 @@
 package com.lbi.logger.views;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
@@ -12,11 +9,12 @@ import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
-import org.eclipse.swt.events.MouseMoveListener;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.lbi.logger.helpers.BufferUtils;
 import com.lbi.logger.helpers.LogMonitor;
 import com.lbi.logger.listeners.ILogListener;
 import com.lbi.logger.models.TextContent;
@@ -24,16 +22,15 @@ import com.lbi.logger.models.TextContent;
 public class LTabItem extends CTabItem
 {
 	private int CHECK_DELAY = 1000;
-	private Timer timer;
 	
 	private String __text;
 	private String log_path;
 	
-	private String buffer;
 	private StyledText styledText;
 	private Composite body;
 	private LogMonitor log_monitor;
 	private TextContent text_content;
+	private GroupButtonsView group_buttons_view;
 	
 	public LTabItem(CTabFolder parent, String log_path)
 	{
@@ -103,7 +100,10 @@ public class LTabItem extends CTabItem
 	public void setLayoutContainer ()
 	{
 		
-		body.setLayout(new FillLayout());
+//		body.setLayout(new FillLayout());
+		body.setLayout(new FormLayout());
+		
+		
 		styledText = new StyledText(body, SWT.MULTI | SWT.WRAP | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.READ_ONLY | SWT.H_SCROLL);
 		styledText.addDisposeListener(new DisposeListener(){
 			public void widgetDisposed(DisposeEvent e) {
@@ -143,6 +143,24 @@ public class LTabItem extends CTabItem
 			}
 		
 		});
+		
+		group_buttons_view = new GroupButtonsView(body, 0);
+		
+		Point size = group_buttons_view.computeSize (SWT.DEFAULT, SWT.DEFAULT);
+		final FormData buttonsData = new FormData (size.x, 25);
+		buttonsData.left = new FormAttachment (0, 0);
+		buttonsData.right = new FormAttachment (100, 0);
+		buttonsData.bottom = new FormAttachment(100,0);
+		group_buttons_view.setLayoutData (buttonsData);
+		
+		FormData listData = new FormData ();
+		listData.left = new FormAttachment (0, 0);
+		listData.right = new FormAttachment (100, 0);
+		listData.top = new FormAttachment (0, 0);
+		listData.bottom = new FormAttachment (group_buttons_view, 0);
+		styledText.setLayoutData (listData);
+		
+		
         setControl(body);
 	}
 	
