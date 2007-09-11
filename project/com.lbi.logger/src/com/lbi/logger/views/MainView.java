@@ -59,7 +59,7 @@ public class MainView extends ViewPart {
 	CTabFolder tab_folder;
 	private IMemento memento;
 	protected LTabItem selected_tab;
-	private GroupButtonsView group_buttons_view;
+//	private GroupButtonsView group_buttons_view;
 	
 	public void createPartControl(Composite $parent)
 	{
@@ -67,9 +67,9 @@ public class MainView extends ViewPart {
 		
 		ColorsHelper.setDisplay(parent.getDisplay());
 
-		parent.setLayout(new FormLayout());
+//		parent.setLayout(new FormLayout());
 		
-		group_buttons_view = new GroupButtonsView(parent, 0);
+//		group_buttons_view = new GroupButtonsView(parent, 0);
 		
 		
 		
@@ -89,12 +89,12 @@ public class MainView extends ViewPart {
 		int modes = SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL | SWT.CLOSE | SWT.TOP;
 		tab_folder = new CTabFolder(parent, modes);
 		
-		FormData listData = new FormData ();
-		listData.left = new FormAttachment (0, 0);
-		listData.right = new FormAttachment (100, 0);
-		listData.top = new FormAttachment (group_buttons_view, 0);
-		listData.bottom = new FormAttachment (100, 0);
-		tab_folder.setLayoutData (listData);
+//		FormData listData = new FormData ();
+//		listData.left = new FormAttachment (0, 0);
+//		listData.right = new FormAttachment (100, 0);
+//		listData.top = new FormAttachment (group_buttons_view, 0);
+//		listData.bottom = new FormAttachment (100, 0);
+//		tab_folder.setLayoutData (listData);
 		
 		tab_folder.addSelectionListener(new SelectionListener (){
 			public void widgetDefaultSelected(SelectionEvent e) {
@@ -273,7 +273,7 @@ public class MainView extends ViewPart {
 	private void selectTab (LTabItem tab)
 	{
 		tab.startLogging();
-		group_buttons_view.setCurrentTab(tab);
+//		group_buttons_view.setCurrentTab(tab);
 		selected_tab = tab;
 	}
 }
