@@ -313,12 +313,12 @@ public class TextContent
 		Iterator<String> it = groups_map.keySet().iterator();
 		int i=0;
 		while(it.hasNext()) {
-			System.out.println("--- iterate " + i + " --- " + it.next());
 			String key = it.next().toString();
+			System.out.println("--- iterate " + i + " --- " + key);
 			groups[i++] = key;
 			System.out.println("+ added " + groups[(i-1)]);
 		}
-		System.out.println(groups);
+//		System.out.println(groups);
 		return groups;
 	}
 
