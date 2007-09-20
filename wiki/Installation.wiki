@@ -1,9 +1,8 @@
 #summary How to install the plugin.
 
-= Installation =
-
 Open *lbi_logger.zip* and extract the content of the folder _plugins_ (currently com.lbi.logger_0.1.1.jar) in your eclipse plugin folder (ie. _C:\Program Files\eclipse\plugins_).
 
+ 
  
  
  
