@@ -4,5 +4,7 @@
   * Possibility to filter the output through radio buttons – like Xray to set a kind of debug level ();
   * Possibility to concatenate the logs of different tests, but also the possibility to show the log file as it is (like FlashTracer does)
   * If we trace Arrays or Objects, make them foldable in the view
+  * Create Classes for main programming languages (AS2-3, Java, ...) to handle the features
 
+ 
  
