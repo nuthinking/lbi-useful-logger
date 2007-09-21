@@ -177,7 +177,8 @@ public class TextContent
 	{
 		if(new_line.startsWith(getCustomStart("element"))){
 			String command = getCommandString(new_line);
-			String name = StringHelper.getAttributeFromCommand(command, "name");
+//			String name = StringHelper.getAttributeFromCommand(command, "name");
+			String name = getItemName(command);
 			TextStyle style = elements_map.get(name);
 			if(style != null){
 				current_style = style;
@@ -191,7 +192,10 @@ public class TextContent
 	{
 		if(new_line.startsWith(getCustomStart("group"))){
 			String command = getCommandString(new_line);
-			String name = StringHelper.getAttributeFromCommand(command, "name");
+//			String name = StringHelper.getAttributeFromCommand(command, "name");
+			System.out.println("command:" + command);
+			String name = getItemName(command);
+			System.out.println("name:" + name);
 			TextStyle style = groups_map.get(name);
 			if(style != null){
 				current_style = style;
@@ -201,6 +205,12 @@ public class TextContent
 		return false;
 	}
 
+	private String getItemName(String command)
+	{
+		int start_pos = command.lastIndexOf(" ");
+		if(start_pos == -1) return null;
+		return command.substring(start_pos+1);
+	}
 	private boolean isCustom(String new_line)
 	{
 		if(new_line.startsWith(getCustomStart("custom"))){
