@@ -1,0 +1,11 @@
+#summary How to use it with ActionScript 2.
+
+We created some classes in our [http://code.google.com/p/lbi-useful-actionscript-2/ Actionscript 2 Library] to easily use the logger features.
+
+The main class is *com.lbi.debug.Log* which uses a couple of Enumeration classes.
+
+The classes are not commented because of their simple behaviours.
+
+ 
+ 
+ 
