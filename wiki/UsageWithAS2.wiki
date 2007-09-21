@@ -4,8 +4,9 @@ We created some classes in our [http://code.google.com/p/lbi-useful-actionscript
 
 The main class is *com.lbi.debug.Log* which uses a couple of Enumeration classes.
 
-The classes are not commented because of their simple behaviours.
+The classes are not commented because of their simple behaviours. The [http://lbi-useful-actionscript-2.googlecode.com/svn/trunk/LBiUseful/project/test/debug/LogTest.as test cases] might be of help in the case.
 
+ 
  
  
  
