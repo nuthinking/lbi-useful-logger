@@ -3,7 +3,7 @@
 <plugin
    id="com.lbi.logger"
    name="LBi Logger"
-   version="0.1.1"
+   version="0.1.2"
    provider-name="LBi"
    class="com.lbi.logger.Activator">
 
