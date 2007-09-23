@@ -18,7 +18,7 @@ The logger has embedded the styles of the common log types (Error, Warning, etc)
 
 = Custom Styles =
 
-It is possible to assign a specific style to any log line, to do it the line should start with the syntax: `[custom background=#660000_ foreground=#00FF00_]`
+It is possible to assign a specific style to any log line, to do it the line should start with the syntax: `[custom background=#660000 foreground=#00FF00]`
 
 During the debugging can be handy group the logs in group. For instance if we are testing network operations and navigation behaviours we could find useful to associate two new different style to those. The logger can be programmed from the log file itself.
 
@@ -27,7 +27,7 @@ The programming lines start with: `[setup-`
 == New Group ==
  
 To create a new group you should trace a line with the following syntax:
-`[setup-group group_name background=#660000 foreground=_#00FF00]`
+`[setup-group group_name background=#660000 foreground=#00FF00]`
 
 Where of course the group name and colours can be chosen as you wish.
  
@@ -43,6 +43,7 @@ To use an element style, the traced line should start with: `[element name=eleme
 ===What is the difference between _group_ and _element_?===
 
 At the moment none, but the idea is to give some interface elements to activate/deactivate the view of a group. The groups then, will be more supported than the elements.
+ 
  
  
  
