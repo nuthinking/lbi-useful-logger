@@ -68,17 +68,14 @@ public class GroupButtonsView extends Composite
 		
 		text_listener = new ITextContentListener(){
 
-			@Override
 			public void onClear()
 			{
 			}
 
-			@Override
 			public void onElementAdded()
 			{
 			}
 
-			@Override
 			public void onGroupAdded()
 			{
 				onTextGroupAdded();
