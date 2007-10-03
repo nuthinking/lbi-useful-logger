@@ -1,0 +1,92 @@
+Warning: Reference to undeclared variable, 'com'
+Warning: CarouselViewItemsFactory.registerCreator, creator for type image will be overwritten
+[DEBUG] slide num:1
+[ERROR] XMLModelXPath.getXPathElement, element intro is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[DEBUG] slide num:5
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[DEBUG] slide num:4
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[DEBUG] slide num:1
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[DEBUG] slide num:1
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[DEBUG] slide num:7
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[custom background=#9933CC foreground=#FFFF00  bold=true] pippo
+[DEBUG] slide num:4
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[ERROR] XMLModelXPath.getXPathElement, element overlay is null!
+[ERROR] XMLModelXPath.getXPathElement, coudn't find attribute _value
+[setup-group navigation background=#660000 foreground=#00FF00]
+[INFO] List.setIndex: 6
+[INFO] List.setIndex: null
+[group name=navigation] traced content
+[WARNING] List.setIndex, index is already null
+[DEBUG] CustomCarouselView::createSlideZero, super_carousel/replay/thumb.jpg
+### SuperNavigationItemView::translateLabelPosition
+[DEBUG] CarouselController::resumeAutoPlay: [Controller id:13:EventDispatcherBase]
+### SuperNavigationItemView::translateLabelPosition
+### SuperNavigationItemView::translateLabelPosition
+### SuperNavigationItemView::translateLabelPosition
+### SuperNavigationItemView::translateLabelPosition
+### SuperNavigationItemView::translateLabelPosition
+### SuperNavigationItemView::translateLabelPosition
+### SuperNavigationItemView::translateLabelPosition
+[INFO] List.setIndex: 0
+[DEBUG] CarouselController::onIndexChanged, 0 [Controller id:13:EventDispatcherBase]
+[DEBUG] CarouselController::pauseAutoPlay: [Controller id:13:EventDispatcherBase]
+[INFO] CarouselItemController, pausePlayback: super_carousel/replay/1.jpg
+[DEBUG] CarouselController::resumeAutoPlay: [Controller id:13:EventDispatcherBase]
+[DEBUG] CarouselItemController::resumePlayback, super_carousel/replay/1.jpg
+[DEBUG] CarouselController::onItemEnded, super_carousel/replay/1.jpg
+[setup-element com.lbi.MyClass background=#FF0000 foreground=#00FF00]
+[INFO] model.next()
+[INFO] index:0
+[INFO] List.setIndex: 1
+[element name=com.lbi.MyClass] pippo
+[setup-clean]
+[DEBUG] CarouselController::onIndexChanged, 1 [Controller id:13:EventDispatcherBase]
+[DEBUG] CarouselController::pauseAutoPlay: [Controller id:13:EventDispatcherBase]
+[INFO] CarouselItemController, pausePlayback: super_carousel/replay/1.jpg
+[INFO] CarouselItemController, pausePlayback: super_carousel/replay/1.jpg
+[DEBUG] CarouselController::resumeAutoPlay: [Controller id:13:EventDispatcherBase]
+[DEBUG] CarouselItemController::resumePlayback, super_carousel/replay/2.jpg
