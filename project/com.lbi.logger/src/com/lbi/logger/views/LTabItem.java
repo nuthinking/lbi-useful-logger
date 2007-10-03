@@ -46,7 +46,6 @@ public class LTabItem extends CTabItem
 		log_monitor = new LogMonitor(log_path, styledText.getDisplay(), CHECK_DELAY);
 		log_monitor.addListener(new ILogListener(){
 
-			@Override
 			public void onLogUpdate()
 			{
 				addContent(log_monitor.getNewContent());
