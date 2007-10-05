@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: LBi Logger
+Bundle-SymbolicName: com.lbi.logger; singleton:=true
+Bundle-Version: 0.1.2
+Bundle-ClassPath: lbi_logger.jar
+Bundle-Activator: com.lbi.logger.Activator
+Bundle-Vendor: LBi Uk
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Eclipse-LazyStart: true
+Export-Package: com.lbi.logger.views

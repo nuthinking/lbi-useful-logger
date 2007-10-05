@@ -10,7 +10,6 @@ import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.graphics.Color;
 
 import com.lbi.logger.helpers.ColorsHelper;
-import com.lbi.logger.helpers.StringHelper;
 import com.lbi.logger.listeners.ITextContentListener;
 
 public class TextContent
