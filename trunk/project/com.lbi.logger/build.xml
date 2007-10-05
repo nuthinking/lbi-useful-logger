@@ -54,5 +54,7 @@
        <zip destfile="${product.zip}">
          <fileset dir="${build.temp}/jars" />
        </zip>
+   	
+   		<delete dir="${build.temp}" />
     </target>
 </project>
