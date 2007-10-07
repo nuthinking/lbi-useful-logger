@@ -4,6 +4,13 @@
 
 One of the goal of this logger is to permit you to differentiate the output style of your logs to keep better track of your application's behaviours. For this reason it is possible to customize the styles from the logs itself without need of any permanent preference in the logger.
 
+= Start Logging =
+
+In Eclipse, select from the menus: *_Window > Show View > Other..._*
+And from the _Show View_ panel, choose *_Logging > (LBi) Logger_*
+
+To open a log file, in the top left menu in the logger, select *_Add new log_* and choose the log file.
+
 = Default Styles =
 
 The logger has embedded the styles of the common log types (Error, Warning, etc). To communicate to the logger that a log trace is of a specific type, the line should start with the syntax "[TYPE] trace content...". Here the matrix with the embedded styles:
