@@ -6,7 +6,7 @@ One of the goal of this logger is to permit you to differentiate the output styl
 
 = Start Logging =
 
-In Eclipse, select from the menus: *_Window > Show View > Other..._*
+After having [http://code.google.com/p/lbi-useful-logger/wiki/Installation installed] the plugin, in Eclipse, select from the menus: *_Window > Show View > Other..._*
 And from the _Show View_ panel, choose *_Logging > (LBi) Logger_*
 
 To open a log file, in the top left menu in the logger, select *_Add new log_* and choose the log file.
