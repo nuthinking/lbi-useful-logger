@@ -32,6 +32,8 @@ public class LogMonitor
 
 	private StringBuffer new_content;
 
+	private String filter_text = "";
+
 	private void dispatchUpdated()
 	{
 		for (Iterator<ILogListener> iter = listeners.iterator(); iter.hasNext();) {
@@ -78,29 +80,33 @@ public class LogMonitor
 			new_content_starting_line = 0;
 			while ((line = input.readLine()) != null) {
 				//System.out.println("::process line:" + line_index);
-				if (!has_changed){
-					//if(lines.size() <= line_index) System.out.println("- it will be a new line for sure, index:"+line_index+" len:" + lines.size());
-					//if (lines.size() > line_index) System.out.println("comparing:\"" + line + "\" with \"" + lines.get(line_index) + "\"");
-					if (lines.size() > line_index && line.equals(lines.get(line_index))) {
-						//System.out.println("found same line:" + new_content_starting_line);
-						new_content_starting_line = line_index+1;
-					} else {
-						//System.out.println("found new line:" + line);
-						has_changed = true;
+				if(filter_text.length()==0
+						|| line.toLowerCase().indexOf(filter_text)>-1)
+				{
+					if (!has_changed){
+						//if(lines.size() <= line_index) System.out.println("- it will be a new line for sure, index:"+line_index+" len:" + lines.size());
+						//if (lines.size() > line_index) System.out.println("comparing:\"" + line + "\" with \"" + lines.get(line_index) + "\"");
+						if (lines.size() > line_index && line.equals(lines.get(line_index))) {
+							//System.out.println("found same line:" + new_content_starting_line);
+							new_content_starting_line = line_index+1;
+						} else {
+							//System.out.println("found new line:" + line);
+							has_changed = true;
+						}
 					}
-				}
-				if (has_changed) {
-					lines.add(line_index, line);
-					//System.out.println("added line, new size:" + lines.size());
-					if(lines.size()>line_index+1){
-						System.out.println("*** the log file has been probably cleaned ***");
-						lines.setSize(line_index+1);
+					if (has_changed) {
+						lines.add(line_index, line);
+						//System.out.println("added line, new size:" + lines.size());
+						if(lines.size()>line_index+1){
+							System.out.println("*** the log file has been probably cleaned ***");
+							lines.setSize(line_index+1);
+						}
+						//System.out.println("append:\"" + line + "\"");
+						new_content.append(line);
+						new_content.append(System.getProperty("line.separator"));
 					}
-					//System.out.println("append:\"" + line + "\"");
-					new_content.append(line);
-					new_content.append(System.getProperty("line.separator"));
+					line_index++;
 				}
-				line_index++;
 			}
 			if(line_index==0){
 				// the stream was null
@@ -175,5 +181,10 @@ public class LogMonitor
 	{
 		lines.clear();
 		checkBuffer();
+	}
+
+	public void setFilter(String text)
+	{
+		filter_text  = text;
 	}
 }
