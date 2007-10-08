@@ -1,6 +1,8 @@
 package com.lbi.logger.views;
 
 import org.eclipse.core.runtime.Preferences;
+import org.eclipse.core.runtime.Preferences.IPropertyChangeListener;
+import org.eclipse.core.runtime.Preferences.PropertyChangeEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
@@ -31,6 +33,8 @@ public class LTabItem extends CTabItem
 	private LogMonitor log_monitor;
 	private TextContent text_content;
 //	private GroupButtonsView group_buttons_view;
+
+	private boolean hide_markups;
 	
 	public LTabItem(CTabFolder parent, String log_path)
 	{
@@ -62,8 +66,38 @@ public class LTabItem extends CTabItem
 			
 		});
 		text_content = new TextContent();
+		
+		hide_markups = Activator.getDefault().getPluginPreferences().getBoolean(PreferenceConstants.HIDE_MARKUPS);
+		
+		Activator.getDefault().getPluginPreferences().addPropertyChangeListener(new IPropertyChangeListener(){
+
+			public void propertyChange(PropertyChangeEvent event)
+			{
+				onPreferencesChanged();
+			}});
+		
 	}
 	
+	protected void onPreferencesChanged()
+	{
+		Preferences prefs = Activator.getDefault().getPluginPreferences();
+		// TODO Auto-generated method stub
+//		System.out.println("Preferences changed!" + Activator.getDefault().getPluginPreferences().getBoolean(PreferenceConstants.HIDE_MARKUPS));
+		if(prefs.getBoolean(PreferenceConstants.HIDE_MARKUPS)
+				!= hide_markups)
+		{
+			reload();
+			hide_markups = prefs.getBoolean(PreferenceConstants.HIDE_MARKUPS);
+		}
+	}
+	
+	private void reload ()
+	{
+		styledText.setText("");
+		styledText.setStyleRanges(new StyleRange[0]);
+		log_monitor.reload();
+	}
+
 	protected void addContent(String newContent)
 	{
 		styledText.append(text_content.parseContent(newContent, styledText.getCharCount()));

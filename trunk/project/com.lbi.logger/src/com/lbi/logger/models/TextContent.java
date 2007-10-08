@@ -9,8 +9,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.graphics.Color;
 
+import com.lbi.logger.Activator;
 import com.lbi.logger.helpers.ColorsHelper;
 import com.lbi.logger.listeners.ITextContentListener;
+import com.lbi.logger.preferences.PreferenceConstants;
 
 public class TextContent
 {
@@ -149,17 +151,31 @@ public class TextContent
 		}
 		buffer_pos +=pos;
 		
-		String new_line = (pos > 0 ? line.substring(pos) : line).toLowerCase();
+		line = (pos > 0 ? line.substring(pos) : line).toLowerCase();
 		
 		startRange();
 		
-		findStyle(new_line);
-
-		buffer_pos += new_line.length();
+		findStyle(line);
+		
+		if(hide_markups()) line = removeMarkups(line);
+		
+		buffer_pos += line.length();
 		endRange();
 		formatted_buffer.append(line);
 		formatted_buffer.append(separator);
 		buffer_pos+=separator.length();
+	}
+	
+	private String removeMarkups(String line)
+	{
+		if(!line.startsWith("[")) return line;
+		int pos = line.indexOf("]");
+		if(pos<2) return line;
+		return line.substring(pos+1);
+	}
+	private boolean hide_markups ()
+	{
+		return Activator.getDefault().getPluginPreferences().getBoolean(PreferenceConstants.HIDE_MARKUPS);
 	}
 	
 	private void findStyle(String new_line)
