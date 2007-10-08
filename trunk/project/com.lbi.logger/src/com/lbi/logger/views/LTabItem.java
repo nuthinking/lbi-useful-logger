@@ -1,5 +1,8 @@
 package com.lbi.logger.views;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.eclipse.core.runtime.Preferences;
 import org.eclipse.core.runtime.Preferences.IPropertyChangeListener;
 import org.eclipse.core.runtime.Preferences.PropertyChangeEvent;
@@ -10,10 +13,15 @@ import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Text;
 
 import com.lbi.logger.Activator;
 import com.lbi.logger.helpers.LogMonitor;
@@ -35,6 +43,11 @@ public class LTabItem extends CTabItem
 //	private GroupButtonsView group_buttons_view;
 
 	private boolean hide_markups;
+
+	private Text filter_text;
+	private long FILTER_DELAY = 200;
+
+	private Timer filter_timer;
 	
 	public LTabItem(CTabFolder parent, String log_path)
 	{
@@ -133,8 +146,8 @@ public class LTabItem extends CTabItem
 	public void setLayoutContainer ()
 	{
 		
-		body.setLayout(new FillLayout());
-//		body.setLayout(new FormLayout());
+//		body.setLayout(new FillLayout(SWT.VERTICAL));
+		body.setLayout(new FormLayout());
 		
 		
 		styledText = new StyledText(body, SWT.MULTI | SWT.WRAP | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.READ_ONLY | SWT.H_SCROLL);
@@ -180,6 +193,27 @@ public class LTabItem extends CTabItem
 		
 		});
 		
+		filter_text = new Text (body, SWT.BORDER);
+		
+		filter_timer = new Timer();
+		
+		filter_text.addModifyListener(new ModifyListener(){
+
+			public void modifyText(ModifyEvent e)
+			{
+				filter_timer.cancel();
+				filter_timer = new Timer();
+				filter_timer.schedule(new FilterTask(), FILTER_DELAY);
+			}
+		});
+		
+		
+		final FormData text_fd = new FormData (100, 12);
+		text_fd.left = new FormAttachment(0,0);
+		text_fd.right = new FormAttachment(100,0);
+		text_fd.bottom = new FormAttachment(100,0);
+		filter_text.setLayoutData(text_fd);
+		
 		/*group_buttons_view = new GroupButtonsView(body, 0);
 		
 		Point size = group_buttons_view.computeSize (SWT.DEFAULT, SWT.DEFAULT);
@@ -187,17 +221,35 @@ public class LTabItem extends CTabItem
 		buttonsData.left = new FormAttachment (0, 0);
 		buttonsData.right = new FormAttachment (100, 0);
 		buttonsData.bottom = new FormAttachment(100,0);
-		group_buttons_view.setLayoutData (buttonsData);
+		group_buttons_view.setLayoutData (buttonsData);*/
 		
 		FormData listData = new FormData ();
-		listData.left = new FormAttachment (0, 0);
+		listData.left = new FormAttachment (body, 0);
 		listData.right = new FormAttachment (100, 0);
 		listData.top = new FormAttachment (0, 0);
-		listData.bottom = new FormAttachment (group_buttons_view, 0);
-		styledText.setLayoutData (listData);*/
-		
+		listData.bottom = new FormAttachment (filter_text, 0);
+		styledText.setLayoutData (listData);
 		
         setControl(body);
+	}
+	
+	class FilterTask extends TimerTask  {  
+		public void run()
+		{
+			styledText.getDisplay().syncExec(new Runnable()
+			{
+				public void run()
+				{
+					filterChanged();
+				}
+			});
+		} 
+     } 
+	
+	protected void filterChanged()
+	{
+		log_monitor.setFilter(filter_text.getText().toLowerCase());
+		reload();
 	}
 	
 	/*public void checkBuffer ()

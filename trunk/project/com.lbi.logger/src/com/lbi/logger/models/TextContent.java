@@ -149,10 +149,10 @@ public class TextContent
 			int pos=0;
 			while(" ".equals(line.charAt(pos)))	pos++;
 			buffer_pos +=pos;
-			line = (pos > 0 ? line.substring(pos) : line).toLowerCase();
+			line = pos > 0 ? line.substring(pos) : line;
 			
 			startRange();
-			findStyle(line);
+			findStyle(line.toLowerCase());
 			if(hide_markups()) line = removeMarkups(line);
 		}
 		
@@ -209,9 +209,9 @@ public class TextContent
 		if(new_line.startsWith(getCustomStart("group"))){
 			String command = getCommandString(new_line);
 //			String name = StringHelper.getAttributeFromCommand(command, "name");
-			System.out.println("command:" + command);
+//			System.out.println("command:" + command);
 			String name = getItemName(command);
-			System.out.println("name:" + name);
+//			System.out.println("name:" + name);
 			TextStyle style = groups_map.get(name);
 			if(style != null){
 				current_style = style;
@@ -231,7 +231,7 @@ public class TextContent
 	{
 		if(new_line.startsWith(getCustomStart("custom"))){
 			String command = getCommandString(new_line);
-			System.out.println("CUSTOM:\"" + command + "\"");
+//			System.out.println("CUSTOM:\"" + command + "\"");
 			current_style = TextStyle.getFromCommand(command);
 			return true;
 		}
@@ -258,7 +258,7 @@ public class TextContent
 	private void addGroup(String command)
 	{
 		added_group = command.split(" ")[1];
-		System.out.println("addGroup: name:" + added_group);
+//		System.out.println("addGroup: name:" + added_group);
 		groups_map.put(added_group, TextStyle.getFromCommand(command));
 		dispatchGroupAdded();
 	}
@@ -266,7 +266,7 @@ public class TextContent
 	private void addElement(String command)
 	{
 		added_element = command.split(" ")[1];
-		System.out.println("addElement: name:" + added_element);
+//		System.out.println("addElement: name:" + added_element);
 		elements_map.put(added_element, TextStyle.getFromCommand(command));
 		dispatchElementAdded();
 	}
@@ -340,9 +340,9 @@ public class TextContent
 		int i=0;
 		while(it.hasNext()) {
 			String key = it.next().toString();
-			System.out.println("--- iterate " + i + " --- " + key);
+//			System.out.println("--- iterate " + i + " --- " + key);
 			groups[i++] = key;
-			System.out.println("+ added " + groups[(i-1)]);
+//			System.out.println("+ added " + groups[(i-1)]);
 		}
 //		System.out.println(groups);
 		return groups;
