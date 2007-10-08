@@ -145,19 +145,16 @@ public class TextContent
 			buffer_pos+=separator.length();
 			return;
 		}
-		int pos=0;
-		while(" ".equals(line.charAt(pos))){
-			pos++;
+		if(line.indexOf("[") > -1){
+			int pos=0;
+			while(" ".equals(line.charAt(pos)))	pos++;
+			buffer_pos +=pos;
+			line = (pos > 0 ? line.substring(pos) : line).toLowerCase();
+			
+			startRange();
+			findStyle(line);
+			if(hide_markups()) line = removeMarkups(line);
 		}
-		buffer_pos +=pos;
-		
-		line = (pos > 0 ? line.substring(pos) : line).toLowerCase();
-		
-		startRange();
-		
-		findStyle(line);
-		
-		if(hide_markups()) line = removeMarkups(line);
 		
 		buffer_pos += line.length();
 		endRange();
@@ -171,7 +168,11 @@ public class TextContent
 		if(!line.startsWith("[")) return line;
 		int pos = line.indexOf("]");
 		if(pos<2) return line;
-		return line.substring(pos+1);
+		pos++;
+//		this caused error, needs a better debug
+//		while(" ".equals(line.charAt(pos)) && pos<line.length()-1)	pos++; 
+		
+		return line.substring(pos);
 	}
 	private boolean hide_markups ()
 	{
