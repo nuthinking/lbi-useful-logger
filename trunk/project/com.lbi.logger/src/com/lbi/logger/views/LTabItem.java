@@ -1,5 +1,6 @@
 package com.lbi.logger.views;
 
+import org.eclipse.core.runtime.Preferences;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
@@ -12,9 +13,11 @@ import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 
+import com.lbi.logger.Activator;
 import com.lbi.logger.helpers.LogMonitor;
 import com.lbi.logger.listeners.ILogListener;
 import com.lbi.logger.models.TextContent;
+import com.lbi.logger.preferences.PreferenceConstants;
 
 public class LTabItem extends CTabItem
 {
@@ -125,7 +128,10 @@ public class LTabItem extends CTabItem
 
 			public void mouseDoubleClick(MouseEvent e)
 			{
-				cleanBuffer();
+				Preferences prefs = Activator.getDefault().getPluginPreferences();
+				boolean use_double_click = prefs.getBoolean(PreferenceConstants.USE_DOUBLE_CLICK_TO_CLEAR);
+//				System.out.println("use double-click: " + use_double_click);
+				if(use_double_click) cleanBuffer();
 			}
 
 			public void mouseDown(MouseEvent e)

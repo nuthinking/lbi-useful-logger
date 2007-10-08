@@ -28,4 +28,19 @@
          </view>
       </perspectiveExtension>
    </extension>
+   
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.lbi.logger.preferences.LoggerPreferencePage"
+            id="com.lbi.logger.preferences.LoggerPreferencePage"
+            name="LBi Logger">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.lbi.logger.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
 </plugin>
