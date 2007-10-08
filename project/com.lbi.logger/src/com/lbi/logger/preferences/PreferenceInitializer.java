@@ -18,6 +18,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.USE_DOUBLE_CLICK_TO_CLEAR, true);
+		store.setDefault(PreferenceConstants.HIDE_MARKUPS, false);
 		/*store.setDefault(PreferenceConstants.P_CHOICE, "choice2");
 		store.setDefault(PreferenceConstants.P_STRING,
 				"Default value");*/

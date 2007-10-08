@@ -41,8 +41,14 @@ public class LoggerPreferencePage
 		addField(
 			new BooleanFieldEditor(
 				PreferenceConstants.USE_DOUBLE_CLICK_TO_CLEAR,
-				"&Enable double-click inside the text area to clean the log",
+				"&Clear the log file on double-clicking inside the text area",
 				getFieldEditorParent()));
+		
+		addField(
+				new BooleanFieldEditor(
+					PreferenceConstants.HIDE_MARKUPS,
+					"&Hide the decorative markups",
+					getFieldEditorParent()));
 
 		/*addField(new RadioGroupFieldEditor(
 				PreferenceConstants.P_CHOICE,

@@ -170,4 +170,10 @@ public class LogMonitor
 	    	e.printStackTrace();
 	    }
 	}
+	
+	public void reload()
+	{
+		lines.clear();
+		checkBuffer();
+	}
 }
