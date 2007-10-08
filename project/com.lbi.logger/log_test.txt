@@ -72,6 +72,8 @@ Warning: CarouselViewItemsFactory.registerCreator, creator for type image will b
 ### SuperNavigationItemView::translateLabelPosition
 ### SuperNavigationItemView::translateLabelPosition
 [INFO] List.setIndex: 0
+		tab test
+        space test
 [DEBUG] CarouselController::onIndexChanged, 0 [Controller id:13:EventDispatcherBase]
 [DEBUG] CarouselController::pauseAutoPlay: [Controller id:13:EventDispatcherBase]
 [INFO] CarouselItemController, pausePlayback: super_carousel/replay/1.jpg
