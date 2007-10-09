@@ -151,10 +151,10 @@ public class LTabItem extends CTabItem
 		
 		
 		styledText = new StyledText(body, SWT.MULTI | SWT.WRAP | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.READ_ONLY | SWT.H_SCROLL);
-		styledText.addDisposeListener(new DisposeListener(){
+		/*styledText.addDisposeListener(new DisposeListener(){
 			public void widgetDisposed(DisposeEvent e) {
-				stopLogging();
-			}});
+				//stopLogging();
+			}});*/
 		/*styledText.addFocusListener(new FocusListener(){
 			public void focusGained(FocusEvent e){
 				System.out.println("FocusGained:" + e.toString());
