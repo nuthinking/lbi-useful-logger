@@ -194,6 +194,7 @@ public class LTabItem extends CTabItem
 		});
 		
 		filter_text = new Text (body, SWT.BORDER);
+		int line_height = filter_text.getLineHeight();
 		
 		filter_timer = new Timer();
 		
@@ -207,8 +208,7 @@ public class LTabItem extends CTabItem
 			}
 		});
 		
-		
-		final FormData text_fd = new FormData (100, 12);
+		final FormData text_fd = new FormData (100, line_height);
 		text_fd.left = new FormAttachment(0,0);
 		text_fd.right = new FormAttachment(100,0);
 		text_fd.bottom = new FormAttachment(100,0);
