@@ -1,0 +1,3 @@
+#summary How to use it in ActionScript 3
+
+We are going to release soon our AS3 library, that will contain it. We have already that class, so if need you can contact me and I'll send it over.
