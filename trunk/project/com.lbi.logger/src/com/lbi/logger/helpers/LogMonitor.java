@@ -11,7 +11,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
 
 import com.lbi.logger.listeners.ILogListener;
 
@@ -50,6 +53,14 @@ public class LogMonitor
 
 		listeners = new Vector<ILogListener>();
 		lines = new Vector<String>();
+		
+		display.addListener(SWT.Dispose, new Listener(){
+
+			public void handleEvent(Event event)
+			{
+//				System.out.println("Display disposed!");
+				stop();
+			}});
 	}
 
 	public void addListener(ILogListener listener)
