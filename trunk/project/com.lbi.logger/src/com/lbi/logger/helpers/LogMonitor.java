@@ -59,7 +59,7 @@ public class LogMonitor
 			public void handleEvent(Event event)
 			{
 //				System.out.println("Display disposed!");
-				stop();
+				if(timer != null) stop();
 			}});
 	}
 
