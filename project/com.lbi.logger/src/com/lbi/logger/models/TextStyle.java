@@ -47,8 +47,10 @@ public class TextStyle
 	
 	public TextStyle ( Color foreground, Color background, boolean is_bold)
 	{
-		if(foreground == null) foreground = ColorsHelper.getColour(SWT.COLOR_BLACK);
-		if(background == null) background = ColorsHelper.getColour(SWT.COLOR_WHITE);
+		if(foreground == null)
+			foreground = ColorsHelper.getColour(SWT.COLOR_BLACK);
+		if(background == null)
+			background = ColorsHelper.getColour(SWT.COLOR_WHITE);
 		
 		this.foreground = foreground;
 		this.background = background;
